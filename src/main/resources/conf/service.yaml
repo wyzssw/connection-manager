@@ -1,8 +1,0 @@
-# HTTP-specific options.
-http:
-  serviceName:  recom
-  desc: provide http service, used for win8.
-  staticRoot: ${server_resources}/web
-#  rootPath: logquery
-  port: 7038
-  adminPort:  7039
