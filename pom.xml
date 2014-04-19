@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sohu.smc</groupId>
+		<artifactId>smc-recommend</artifactId>
+		<version>2.0</version>
+	</parent>   
+	<groupId>com.sohu.smc</groupId>
+	<artifactId>smc-recommend-service</artifactId>
+	<version>2.0</version>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<distributionManagement>
+		<repository>
+			<id>dp-nexus-snapshots</id>
+			<name>Nexus Release Repository</name>
+			<url>http://svn.k.sohu.com/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>dp-nexus-releases</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://svn.k.sohu.com/nexus/content/repositories/snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/src.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Public Repository</name>
+			<url>http://svn.k.sohu.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://svn.k.sohu.com/nexus/content/groups/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencies>
+	     <dependency>
+	         <groupId>com.sohu.smc</groupId>
+	         <artifactId>smc-recommend-common</artifactId>
+	         <version>2.1</version>
+	     </dependency>
+		<dependency>
+			<groupId>spy</groupId>
+			<artifactId>spymemcached</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>com.alibaba</groupId>
+		  <artifactId>fastjson</artifactId>
+		</dependency>	
+		<dependency>
+			<groupId>com.sohu.smc</groupId>
+			<artifactId>smc-framework-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sohu.smc</groupId>
+			<artifactId>smc-framework-client</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>elephantdb</artifactId>
+        </dependency>
+	   <dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.0</version>
+	   </dependency>
+   </dependencies>
+</project>

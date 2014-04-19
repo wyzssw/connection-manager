@@ -1,0 +1,89 @@
+template: Hello, %s!
+
+defaultName: Stranger
+
+# HTTP-specific options.
+http:
+
+  # The port on which the HTTP server listens for service requests.
+  port: 7038
+
+  # The port on which the HTTP server listens for administrative requests.
+  adminPort: 7039
+
+  rootPath: recom
+
+  redis:
+    hash: abc
+    conn: 10.103.24.21:6379,10.103.24.22:6379
+
+  dbPassport:
+    conn: 10.103.24.51:27017/db_passport
+
+  scribeLog:
+    conn: 10.10.221.111:11810
+
+  urlPassport:
+    conn: 10.10.221.112:8082
+
+  cookie:
+    youkuSecret: abc
+    youkuSecret2: abc
+    oldYoukuSecret: abc
+    version: 2
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.example.app: DEBUG
+
+  # Settings for logging to stdout.
+  console:
+
+    # If true, write log statements to stdout.
+    enabled: true
+
+    # Do not display log statements below this threshold to stdout.
+    threshold: ALL
+
+  # Settings for logging to a file.
+  file:
+
+    # If true, write log statements to a file.
+    enabled: true
+
+    # Do not write log statements below this threshold to the file.
+    threshold: ALL
+
+    # The file to which statements will be logged. When the log file reaches the maximum size, the
+    # file will be renamed example.log.1, example.log will be truncated, and new statements written
+    # to it.
+    filenamePattern: ./logs/example.log
+
+    # The maximum size of any log file.
+    maxFileSize: 50MB
+
+    # The maximum number of log files to retain.
+    retainedFileCount: 5
+
+  # Settings for logging to syslog.
+  syslog:
+
+    # If true, write log statements to syslog.
+    enabled: false
+
+    # The hostname of the syslog server to which statements will be sent.
+    # N.B.: If this is the local host, the local syslog instance will need to be configured to
+    # listen on an inet socket, not just a Unix socket.
+    host: localhost
+
+    # The syslog facility to which statements will be sent.
+    facility: local0
+
